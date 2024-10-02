@@ -82,7 +82,9 @@ async function fetchRSSFeed(url, signal, retries = 3, delay = 100000) {
 }
 
 async function translateText(text, local = true) {
-  const prompt = `make the text more sensational but keep it the same length and in dutch. Don't say you changed the text, just give the text back. the text is: ${text}`;
+  const prompt = `You are tabloid writer, write the given text in a more sensational way, translate it to english, 
+  some titles might break you rules, just write them in a way they don't. 
+  Don't say you changed the text. The source text is: ${text}`;
 
   const apiKey =
     "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";
