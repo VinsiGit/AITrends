@@ -1,0 +1,131 @@
+/* Variables */
+:root {
+  --primary-color: #4caf50;
+  --secondary-color: #f44336;
+  --border-color: #ccc;
+  --background-color: #f9f9f9;
+  --text-color: #333;
+  --focus-color: #007bff;
+  --font-size: 16px;
+  --padding: 10px;
+  --border-radius: 4px;
+}
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.rss-item {
+  margin-bottom: 20px;
+}
+
+.rss-item h2 {
+  margin: 0;
+}
+
+.rss-item p {
+  margin: 5px 0;
+}
+
+/* Select Input Styles */
+#language-select,
+#custom-language-input {
+  padding: var(--padding);
+  font-size: var(--font-size);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#language-select:focus,
+#custom-language-input:focus {
+  border-color: var(--focus-color);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#language-select option {
+  padding: var(--padding);
+}
+
+/* Button Styles */
+.button {
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: var(--padding) 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: var(--font-size);
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#fetch-feed {
+  background-color: var(--primary-color);
+}
+
+#stop,
+#clear {
+  background-color: var(--secondary-color);
+}
+
+/* Custom Checkbox Styles */
+.container {
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 1rem;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
