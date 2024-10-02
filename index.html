@@ -1,49 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="index.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
-    <title>RSS Feed Website</title>
-  </head>
 
-  <body>
-    <h1>RSS Feed</h1>
-    <div id="option">
-      <label>
-        <select id="language-select">
-          <option value="english">English</option>
-          <option value="dutch">Dutch</option>
-          <option value="french">French</option>
-          <option value="spanish">Spanish</option>
-          <option value="custom">Custom</option>
-        </select>
-        <input
-          type="text"
-          id="custom-language-input"
-          placeholder="Enter custom language"
-          style="display: none"
-        />
-      </label>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="module" src="index.js" defer></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>RSS Feed Website</title>
+</head>
 
-      <label id="container">
-        Translate
+<body>
+  <h1>RSS Feed</h1>
+  <div id="option">
+    <!-- <label>
+      <select id="language-select">
+        <option value="english">English</option>
+        <option value="dutch">Dutch</option>
+        <option value="french">French</option>
+        <option value="spanish">Spanish</option>
+        <option value="custom">Custom</option>
+      </select>
+      <input type="text" id="custom-language-input" placeholder="Enter custom language" style="display: none" />
+    </label> -->
 
-        <input type="checkbox" id="translate-checkbox" checked />
-        <span id="checkmark"></span>
-      </label>
+    <label id="container">
+      Translate
 
-      <button id="fetch-feed" class="button">Fetch RSS Feed</button>
-      <button id="stop" class="button">Stop</button>
-      <button id="clear" class="button">clear</button>
+      <input type="checkbox" id="translate-checkbox" checked />
+      <span id="checkmark"></span>
+    </label>
 
-      <label id="container">
-        Local Model
-        <input type="checkbox" id="local-checkbox" checked />
-        <span id="checkmark"></span>
-      </label>
-    </div>
-    <div id="rss-feed"></div>
-  </body>
+    <button id="fetch-feed" class="button">Fetch RSS Feed</button>
+    <button id="stop" class="button">Stop</button>
+    <button id="clear" class="button">clear</button>
+
+    <label id="container">
+      Local Model
+      <input type="checkbox" id="local-checkbox" checked />
+      <span id="checkmark"></span>
+    </label>
+  </div>
+  <div id="rss-feed"></div>
+</body>
+
 </html>

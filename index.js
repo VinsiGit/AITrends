@@ -1,28 +1,21 @@
 // Description: This file contains the JavaScript code for the RSS feed reader.
 let abortController = new AbortController();
 
-document.getElementById("language-select").addEventListener("change", () => {
-  const customLanguageInput = document.getElementById("custom-language-input");
-  if (document.getElementById("language-select").value === "custom") {
-    customLanguageInput.style.display = "inline";
-  } else {
-    customLanguageInput.style.display = "none";
-  }
-});
+
 
 document.getElementById("fetch-feed").addEventListener("click", async () => {
   abortController = new AbortController();
 
   const translateBool = document.getElementById("translate-checkbox").checked;
-  const selectedLanguage = document.getElementById("language-select").value;
-  const customLanguage = document.getElementById("custom-language-input").value;
-  const targetLanguage =
-    selectedLanguage === "custom" ? customLanguage : selectedLanguage;
+  // const selectedLanguage = document.getElementById("language-select").value;
+  // const customLanguage = document.getElementById("custom-language-input").value;
+  // const targetLanguage = 
+  // selectedLanguage === "custom" ? customLanguage : selectedLanguage;
 
   const rssUrl = "https://www.vrt.be/vrtnws/nl.rss.articles.xml"; // RSS feed
   const xml = await fetchRSSFeed(rssUrl, abortController.signal);
   const items = xml.querySelectorAll("entry");
-  processItems(items, translateBool, targetLanguage, abortController.signal);
+  processItems(items, translateBool, abortController.signal);
 });
 
 
@@ -88,8 +81,8 @@ async function fetchRSSFeed(url, signal, retries = 3, delay = 100000) {
   return null;
 }
 
-async function translateText(text, targetLang = "dutch", local = true) {
-  const prompt = `translate the text to ${targetLang}. Don't say you translated it to dutch, just give the text back. the text is: ${text}`;
+async function translateText(text, local = true) {
+  const prompt = `make the text more sensational but keep it the same length and in dutch. Don't say you changed the text, just give the text back. the text is: ${text}`;
 
   const apiKey =
     "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";
@@ -161,7 +154,6 @@ async function translateText(text, targetLang = "dutch", local = true) {
 async function processItems(
   items,
   translateBool = true,
-  selectedLanguage = "Dutch",
   signal
 ) {
   const rssFeed = document.getElementById("rss-feed");
@@ -177,7 +169,7 @@ async function processItems(
 
     const title = item.querySelector("title").textContent;
     const translatedTitle = translateBool
-      ? await translateText(title, selectedLanguage, local)
+      ? await translateText(title, local)
       : title;
 
     const link = item
@@ -186,7 +178,7 @@ async function processItems(
 
     const description = item.querySelector("summary").textContent;
     const translatedDescription = translateBool
-      ? await translateText(description, selectedLanguage, local)
+      ? await translateText(description, local)
       : description;
 
     const articleContent = await fetchRSSFeed(
@@ -196,7 +188,7 @@ async function processItems(
       articleContent.querySelector("content").textContent
     );
     const translatedArticleContent = translateBool
-      ? await translateText(article, selectedLanguage, local)
+      ? await translateText(article, local)
       : article;
 
     const rssItem = document.createElement("div");
